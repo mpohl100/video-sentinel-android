@@ -49,6 +49,11 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         this.doBlur()
     }
 
+    fun btnRect_click(view: View){
+        // This is the actual call to the rect method inside native-lib.cpp
+        this.rect(srcBitmap!!, srcBitmap!!)
+    }
+
     override fun onStartTrackingTouch(seekBar: SeekBar?) {}
     override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
@@ -59,6 +64,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     external fun stringFromJNI(): String
     external fun blur(bitmapIn: Bitmap, bitmapOut: Bitmap, sigma: Float)
     external fun flip(bitmapIn: Bitmap, bitmapOut: Bitmap)
+    external fun rect(bitmapIn: Bitmap, bitmapOut: Bitmap)
 
     companion object {
 

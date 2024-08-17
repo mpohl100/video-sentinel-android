@@ -121,3 +121,11 @@ Java_com_vyw_androidopencvdemo_MainActivity_blur(JNIEnv *env, jobject p_this, jo
     myBlur(src, sigma);
     matToBitmap(env, src, bitmapOut, false);
 }
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_vyw_androidopencvdemo_MainActivity_rect(JNIEnv *env, jobject p_this, jobject bitmapIn, jobject bitmapOut, jfloat sigma) {
+    Mat src;
+    bitmapToMat(env, bitmapIn, src, false);
+    addRectangles(src);
+    matToBitmap(env, src, bitmapOut, false);
+}

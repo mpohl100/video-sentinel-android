@@ -26,36 +26,36 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         dstBitmap = srcBitmap!!.copy(srcBitmap!!.config, true)
         imageView.setImageBitmap(dstBitmap)
 
-        sldSigma.setOnSeekBarChangeListener(this)
+        // sldSigma.setOnSeekBarChangeListener(this)
     }
 
-    fun doBlur() {
-        // The SeekBar range is 0-100 convert it to 0.1-10
-        val sigma = max(0.1F, sldSigma.progress / 10F)
-
-        // This is the actual call to the blur method inside native-lib.cpp
-        this.blur(srcBitmap!!, dstBitmap!!, sigma)
-    }
-
-    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-        this.doBlur()
-    }
-
-    fun btnFlip_click(view: View) {
-        // This is the actual call to the blur method inside native-lib.cpp
-        // note we flip srcBitmap (which is not displayed) and then call doBlur which will
-        // eventually update dstBitmap (and which is displayed)
-        this.flip(srcBitmap!!, srcBitmap!!)
-        this.doBlur()
-    }
+//    fun doBlur() {
+//        // The SeekBar range is 0-100 convert it to 0.1-10
+//        val sigma = max(0.1F, sldSigma.progress / 10F)
+//
+//        // This is the actual call to the blur method inside native-lib.cpp
+//        this.blur(srcBitmap!!, dstBitmap!!, sigma)
+//    }
+//
+//    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+//        this.doBlur()
+//    }
+//
+//    fun btnFlip_click(view: View) {
+//        // This is the actual call to the blur method inside native-lib.cpp
+//        // note we flip srcBitmap (which is not displayed) and then call doBlur which will
+//        // eventually update dstBitmap (and which is displayed)
+//        this.flip(srcBitmap!!, srcBitmap!!)
+//        this.doBlur()
+//    }
+//
+//    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+//    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
     fun btnRect_click(view: View){
         // This is the actual call to the rect method inside native-lib.cpp
         this.rect(srcBitmap!!, srcBitmap!!)
     }
-
-    override fun onStartTrackingTouch(seekBar: SeekBar?) {}
-    override fun onStopTrackingTouch(seekBar: SeekBar?) {}
 
     /**
      * A native method that is implemented by the 'native-lib' native library,

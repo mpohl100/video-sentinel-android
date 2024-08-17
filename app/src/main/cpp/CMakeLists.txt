@@ -5,6 +5,8 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+add_subdirectory(video-sentinel)
+
 #opencv
 set(OpenCV_STATIC on)
 set(OpenCV_DIR $ENV{OPENCV_ANDROID}/sdk/native/jni)
@@ -51,4 +53,5 @@ target_link_libraries( # Specifies the target library.
         # included in the NDK.
         ${OpenCV_LIBS}
         ${jnigraphics-lib}
-        ${log-lib})
+        ${log-lib}
+        webcam)
